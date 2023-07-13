@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; // lets us navigate to different pages
 
-import Form from "@components/form";
+import Form from "@components/Form";
 
 const EditPost = () => {
   const router = useRouter(); // router object

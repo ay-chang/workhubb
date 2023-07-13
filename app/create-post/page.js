@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react"; // lets us know which user is currently logged in
 import { useRouter } from "next/navigation"; // lets us navigate to different pages
 
-import Form from "@components/form";
+import Form from "@components/Form";
 
 /**
  * Things to implement in this file
