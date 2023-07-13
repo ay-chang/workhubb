@@ -14,7 +14,8 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const router = useRouter();
 
   return (
-    <div className="post__card">
+    <div className="post__card relative">
+      {/* Section with imgage, username, and email **/}
       <div className="flex justify-between items-start gap-5">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
           <Image
@@ -36,7 +37,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
       <p className="my-4 font-santoshi text-sm text-gray-700">{post.post}</p>
       <p
-        className="font-inter text-sm cursor-pointer text-blue-500"
+        className="font-inter text-sm cursor-pointer text-blue-500 absolute bottom-5"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         {post.tag}

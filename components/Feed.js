@@ -21,7 +21,7 @@ const Feed = () => {
   // Search states
   const [searchedResults, setSearchedResults] = useState([]); // array, state for the posts that will be filtered based on the search text
   const [searchText, setSearchText] = useState(""); // string state for the text within the search input,
-  const [searchTimeout, setSearchTimeout] = useState(null);
+  const [searchTimeout, setSearchTimeout] = useState(null); // timeout state for the debounce method
 
   // This effect will run once when the component is mounted and will fetch
   // all the posts from the API and add posts to the posts array state.
@@ -36,8 +36,7 @@ const Feed = () => {
     fetchPosts();
   }, []);
 
-  // DESCRIPTION:
-
+  // DESCRIPTION: Search for posts based on the search text and return the results.
   const filterPosts = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
     return allPosts.filter(

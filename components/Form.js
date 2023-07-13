@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 /**
- * Make own css and tailwind customizations
+ * This is the Form component used for creating a new post and editing an existing post.
  *
  * TODO:
+ * Make own css and tailwind customizations
+ *
  * - customize h1 tag for Create Post
  * - redesign the form box from glasssmoprhism
  * - edit description
