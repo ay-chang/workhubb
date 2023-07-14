@@ -31,14 +31,16 @@ const nav = () => {
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
-        <p>{"</>"} WorkHubb</p>
+        <p>
+          <b>{"</>"}</b> workhubb
+        </p>
       </Link>
 
       {/* Desktop Nav */}
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-post" className="black__btn">
+            <Link href="/create-post" className="outline__btn">
               Create Post
             </Link>
             <button type="button" onClick={signOut} className="outline__btn">
@@ -62,7 +64,7 @@ const nav = () => {
                   type="button"
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
-                  className="black__btn"
+                  className="outline__btn"
                 >
                   Sign In
                 </button>

@@ -54,13 +54,13 @@
 }
 
 .black__btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all
+  @apply rounded-lg border border-black bg-black py-1.5 px-5 text-white transition-all
   hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
 .outline__btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all 
-  hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-lg border border-gray-300 bg-transparent py-1.5 px-5 text-black transition-all 
+  hover:bg-gray-100 text-center text-sm font-inter flex items-center justify-center;
 }
 
 .flex-center {
@@ -120,9 +120,13 @@
 /* Post Card Component */
 .post__card {
   @apply break-inside-avoid rounded-lg border border-gray-300 bg-white/20 my-6
-  bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-64;
+  bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-64 h-64;
 }
 
+/* .post__layout {
+  @apply py-8 sm:gap-6 sm:columns-2 xl:columns-3;
+} */
+
 .post__layout {
-  @apply py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply py-8 gap-6 flex
 }
