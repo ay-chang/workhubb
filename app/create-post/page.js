@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react"; // lets us know which user is currently logged in
 import { useRouter } from "next/navigation"; // lets us navigate to different pages
 
@@ -18,7 +18,7 @@ const CreatePost = () => {
   const { data: session } = useSession(); // session object
 
   const [submitting, setSubmitting] = useState(false); // state for submitting form
-  const [post, setPost] = useState({ post: "", tag: "" }); // state for post details
+  const [post, setPost] = useState({ title: "", post: "", tag: "", amount: "" }); // state for post details
 
   // Make a POST request to the API which is in MongoDB
   const createPost = async (e) => {
@@ -36,9 +36,11 @@ const CreatePost = () => {
       const response = await fetch("/api/post/new", {
         method: "POST",
         body: JSON.stringify({
+          title: post.title,
           post: post.post,
           userId: session?.user.id,
           tag: post.tag,
+          amount: post.amount,
         }),
       });
 

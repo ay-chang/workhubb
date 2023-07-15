@@ -5,9 +5,17 @@ const PostSchema = new Schema({
     type: Schema.Types.ObjectId, // Reference the object Id of the user
     ref: "User", // reference to the User model to create a relationship, one to many relationship
   },
+  title: {
+    type: String,
+    required: [true, "Title is required."],
+  },
   post: {
     type: String,
     required: [true, "Post is required."],
+  },
+  amount: {
+    type: String,
+    required: [true, "Amount is required."],
   },
   tag: {
     type: String,

@@ -5,9 +5,8 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
-// FIXME: At the moment to access the post details, you have to use post.post..., find a way
-// to fix this and chang it so it only needs post... This could maybe be an issue with the post
-// schema or maybe how the data is sent from Feed.js to PostCard.js ✅
+// TODO: In the profile page, hide edit and delete button and use them as a dropdown menu
+
 const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
@@ -35,7 +34,12 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
       </div>
 
-      <p className="my-4 font-santoshi text-sm text-gray-700">{post.post}</p>
+      {/* Section with job title, job description, and tags **/}
+      <p className="mt-6 font-santoshi text-lg font-semibold text-gray-800">{post.title}</p>
+      <p className="my-2 font-santoshi text-sm text-gray-700 line-clamp-4">{post.post}</p>
+      <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 absolute bottom-16">
+        {post.amount}
+      </p>
       <p
         className="font-inter text-sm cursor-pointer text-blue-500 absolute bottom-5"
         onClick={() => handleTagClick && handleTagClick(post.tag)}

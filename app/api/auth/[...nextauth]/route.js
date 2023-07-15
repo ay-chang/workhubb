@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
 import { connectToDB } from "@utils/database";
 
-import User from "@models/user"; // Schema for creating a User
+import User from "@models/userSchema"; // Schema for creating a User
 
 // This file is used to create a session for the user and to authenticate the user, creating the user
 

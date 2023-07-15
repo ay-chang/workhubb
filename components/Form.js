@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 
 /**
  * This is the Form component used for creating a new post and editing an existing post.
@@ -10,9 +13,16 @@ import Link from "next/link";
  * - redesign the form box from glasssmoprhism
  * - edit description
  * - Better understand how this file works
+ *
+ * REMINDER: The deconstructed props object parameters are taken in from the other file. This means post comes
+ * from another file and setPost comes from another file, we are just using it in this file which is eventually
+ * sent back to the other file that uses the Form component.
+ *
  */
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  const [activeButton, setActiveButton] = useState(""); // state for the active amount button
+
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head__text text-left">
@@ -23,6 +33,20 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
         onSubmit={handleSubmit}
         className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
       >
+        {/** Job title input box */}
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Give your job a title
+          </span>
+          <input
+            value={post.title}
+            onChange={(e) => setPost({ ...post, title: e.target.value })}
+            placeholder="Job title"
+            required
+            className="form__input"
+          />
+        </label>
+
         {/** Main job description text box */}
         <label>
           <span className="font-satoshi font-semibold text-base text-gray-700">
@@ -53,6 +77,52 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
             className="form__input"
           />
         </label>
+
+        {/** Amount button selection */}
+        <label>
+          <span className="font-satoshi font-semibold text-base text-gray-700">
+            Select Amount Range
+            <span className="flex pt-2 gap-6 text-xs font-light">
+              <p
+                onClick={() => {
+                  setPost({ ...post, amount: "< $50" });
+                  setActiveButton("< $50");
+                }}
+                className={`amount__btn ${activeButton === "< $50" ? "active" : ""}`}
+              >{`< $50`}</p>
+              <p
+                onClick={() => {
+                  setPost({ ...post, amount: "$50 - $99" });
+                  setActiveButton("$50 - $99");
+                }}
+                className={`amount__btn ${activeButton === "$50 - $99" ? "active" : ""}`}
+              >{`$50 - $99`}</p>
+              <p
+                onClick={() => {
+                  setPost({ ...post, amount: "$100 - $999" });
+                  setActiveButton("$100 - $999");
+                }}
+                className={`amount__btn ${activeButton === "$100 - $999" ? "active" : ""}`}
+              >{`$100 - $999`}</p>
+              <p
+                onClick={() => {
+                  setPost({ ...post, amount: "$1,000 - $9,999" });
+                  setActiveButton("$1,000 - $9,999");
+                }}
+                className={`amount__btn ${activeButton === "$1,000 - $9,999" ? "active" : ""}`}
+              >{`$1,000 - $9,999`}</p>
+              <p
+                onClick={() => {
+                  setPost({ ...post, amount: "> $10,000" });
+                  setActiveButton("> $10,000");
+                }}
+                className={`amount__btn ${activeButton === "> $10,000" ? "active" : ""}`}
+              >{`> $10,000`}</p>
+            </span>
+          </span>
+        </label>
+
+        {/** Submit and cancel buttons */}
         <div className="flex-end mx-3 mb-5 gap-4">
           <Link href="/" className="text-gray-500 text-sm">
             Cancel

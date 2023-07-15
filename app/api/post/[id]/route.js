@@ -1,4 +1,4 @@
-import Post from "@models/post";
+import Post from "@models/postSchema";
 import { connectToDB } from "@utils/database";
 
 // Routes for editing and deleting posts that belong to the session user
@@ -18,7 +18,7 @@ export const GET = async (request, { params }) => {
 
 // PATCH (update)
 export const PATCH = async (request, { params }) => {
-  const { post, tag } = await request.json();
+  const { post, tag, title, amount } = await request.json();
 
   try {
     await connectToDB();
@@ -29,6 +29,8 @@ export const PATCH = async (request, { params }) => {
 
     existingPost.post = post;
     existingPost.tag = tag;
+    existingPost.title = title;
+    existingPost.amount = amount;
 
     await existingPost.save();
 

@@ -1,4 +1,4 @@
-import Post from "@models/post";
+import Post from "@models/postSchema";
 import { connectToDB } from "@utils/database";
 
 // This is the GET route for the posts of a specific user

@@ -31,30 +31,48 @@ const nav = () => {
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
-        <p>
-          <b>{"</>"}</b> workhubb
+        <p className="text-lg">
+          <b className="blue__gradient text-xl">{"</>"}</b> workhubb
         </p>
       </Link>
 
       {/* Desktop Nav */}
-      <div className="sm:flex hidden">
+      <div className="sm:flex hidden relative">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-post" className="outline__btn">
               Create Post
             </Link>
-            <button type="button" onClick={signOut} className="outline__btn">
-              Sign Out
-            </button>
-            <Link href="/profile">
+            <div onClick={() => setToggleDropdown((prev) => !prev)}>
               <Image
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className="rounded-full"
+                className="rounded-full cursor-pointer"
                 alt="profile"
               />
-            </Link>
+            </div>
+            {toggleDropdown && (
+              <div className="dropdown">
+                <Link
+                  href="/profile"
+                  className="dropdown__link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  My Profile
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setToggleDropdown(false);
+                    signOut();
+                  }}
+                  className="mt-5 w-full black__btn"
+                >
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
         ) : (
           <>
@@ -82,7 +100,7 @@ const nav = () => {
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className="rounded-full"
+                className="rounded-full cursor-pointer"
                 alt="profile"
               />
             </div>

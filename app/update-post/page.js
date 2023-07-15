@@ -11,7 +11,7 @@ const EditPost = () => {
   const postId = searchParams.get("id"); // get the id from the search params
 
   const [submitting, setSubmitting] = useState(false); // state for submitting form
-  const [post, setPost] = useState({ post: "", tag: "" }); // state for post details
+  const [post, setPost] = useState({ post: "", tag: "", title: "", amount: "" }); // state for post details
 
   // Fetches the existing post details from the API, only runs when the postId changes
   useEffect(() => {
@@ -19,8 +19,10 @@ const EditPost = () => {
       const response = await fetch(`/api/post/${postId}`);
       const data = await response.json();
       setPost({
+        title: data.title,
         post: data.post,
         tag: data.tag,
+        amount: data.amount,
       });
     };
 
@@ -38,8 +40,10 @@ const EditPost = () => {
       const response = await fetch(`/api/post/${postId}`, {
         method: "PATCH",
         body: JSON.stringify({
+          title: post.title,
           post: post.post,
           tag: post.tag,
+          amount: post.amount,
         }),
       });
 
@@ -47,7 +51,7 @@ const EditPost = () => {
 
       // If the response is okay, redirect to the homepage
       if (response.ok) {
-        router.push("/");
+        router.push("/profile");
       }
     } catch (error) {
       console.error(error);

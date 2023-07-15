@@ -41,6 +41,14 @@
 
 /* Tailwind Styles */
 
+/* Colors */
+
+.blue__gradient {
+  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+/* Components */
+
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
@@ -53,6 +61,8 @@
   @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
 }
 
+/* Buttons */
+
 .black__btn {
   @apply rounded-lg border border-black bg-black py-1.5 px-5 text-white transition-all
   hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
@@ -60,7 +70,16 @@
 
 .outline__btn {
   @apply rounded-lg border border-gray-300 bg-transparent py-1.5 px-5 text-black transition-all 
-  hover:bg-gray-100 text-center text-sm font-inter flex items-center justify-center;
+  hover:bg-gray-100 hover:border-gray-400 text-center text-sm font-inter flex items-center justify-center;
+}
+
+.amount__btn {
+  @apply rounded-lg border border-gray-300 bg-transparent py-1 px-5 text-black transition-all hover:bg-gray-100 
+  hover:border-gray-400 cursor-pointer;
+}
+
+.amount__btn.active {
+  @apply bg-gray-100 border-gray-400;
 }
 
 .flex-center {
@@ -78,6 +97,9 @@
 .flex-between {
   @apply flex justify-between items-center;
 }
+
+
+/* Navbar */
 
 .dropdown {
   @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] 
@@ -108,25 +130,21 @@
 
 
 /* Feed Component */
+
 .feed {
-  @apply mt-16 mx-auto w-full max-w-xl flex justify-center items-center flex-col gap-2;
+  @apply mt-16 mx-auto w-full flex flex-col justify-center items-center gap-2;
 }
 
 .search__input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg 
-  font-medium focus:border-black focus:outline-none focus:ring-0;
+  @apply block lg:w-2/3 w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg 
+  font-medium focus:border-gray-300 focus:outline-none focus:ring-0;
 }
 
-/* Post Card Component */
 .post__card {
-  @apply break-inside-avoid rounded-lg border border-gray-300 bg-white/20 my-6
-  bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-64 h-64;
+  @apply break-inside-avoid rounded-lg border border-gray-300 bg-white/20 my-4
+  p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-80 shadow-sm;
 }
-
-/* .post__layout {
-  @apply py-8 sm:gap-6 sm:columns-2 xl:columns-3;
-} */
 
 .post__layout {
-  @apply py-8 gap-6 flex
+  @apply py-6 gap-6 w-full grid md:grid-cols-2 lg:grid-cols-3;
 }

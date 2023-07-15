@@ -15,6 +15,7 @@ const PostCardList = ({ data, handleTagClick }) => {
   );
 };
 
+// Feed Component
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
 
@@ -23,8 +24,8 @@ const Feed = () => {
   const [searchText, setSearchText] = useState(""); // string state for the text within the search input,
   const [searchTimeout, setSearchTimeout] = useState(null); // timeout state for the debounce method
 
-  // This effect will run once when the component is mounted and will fetch
-  // all the posts from the API and add posts to the posts array state.
+  // This effect will run once when the component is mounted and will fetch all the posts from the API
+  // and add posts to the posts array state. This is simplyg retreiving all posts.
   const fetchPosts = async () => {
     const response = await fetch("/api/post");
     const data = await response.json();

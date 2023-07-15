@@ -1,4 +1,4 @@
-import Post from "@models/post";
+import Post from "@models/postSchema";
 import { connectToDB } from "@utils/database";
 
 // This file is the API route that retrives a post from the database which is being mapped
