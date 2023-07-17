@@ -23,6 +23,8 @@ import { useState } from "react";
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   const [activeButton, setActiveButton] = useState(""); // state for the active amount button
 
+  const amountOptions = ["< $50", "$50 - $100", "$100 - $200", "$200 - $500", "> $500"];
+
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head__text text-left">
@@ -83,41 +85,18 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
           <span className="font-satoshi font-semibold text-base text-gray-700">
             Select Amount Range
             <span className="flex pt-2 gap-6 text-xs font-light">
-              <p
-                onClick={() => {
-                  setPost({ ...post, amount: "< $50" });
-                  setActiveButton("< $50");
-                }}
-                className={`amount__btn ${activeButton === "< $50" ? "active" : ""}`}
-              >{`< $50`}</p>
-              <p
-                onClick={() => {
-                  setPost({ ...post, amount: "$50 - $99" });
-                  setActiveButton("$50 - $99");
-                }}
-                className={`amount__btn ${activeButton === "$50 - $99" ? "active" : ""}`}
-              >{`$50 - $99`}</p>
-              <p
-                onClick={() => {
-                  setPost({ ...post, amount: "$100 - $999" });
-                  setActiveButton("$100 - $999");
-                }}
-                className={`amount__btn ${activeButton === "$100 - $999" ? "active" : ""}`}
-              >{`$100 - $999`}</p>
-              <p
-                onClick={() => {
-                  setPost({ ...post, amount: "$1,000 - $9,999" });
-                  setActiveButton("$1,000 - $9,999");
-                }}
-                className={`amount__btn ${activeButton === "$1,000 - $9,999" ? "active" : ""}`}
-              >{`$1,000 - $9,999`}</p>
-              <p
-                onClick={() => {
-                  setPost({ ...post, amount: "> $10,000" });
-                  setActiveButton("> $10,000");
-                }}
-                className={`amount__btn ${activeButton === "> $10,000" ? "active" : ""}`}
-              >{`> $10,000`}</p>
+              {amountOptions.map((option) => (
+                <p
+                  key={option}
+                  onClick={() => {
+                    setPost({ ...post, amount: option });
+                    setActiveButton(option);
+                  }}
+                  className={`amount__btn ${activeButton === option ? "active" : ""}`}
+                >
+                  {option}
+                </p>
+              ))}
             </span>
           </span>
         </label>

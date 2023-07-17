@@ -6,7 +6,7 @@ const Home = () => {
     <section className="w-full flex-center flex-col">
       <h1 className="head__text text-center">
         Welcome to the <br className="max-md:hidden" />
-        <span className="text-center">Work Hubb</span>
+        <span className="text-center blue__gradient">Work Hubb</span>
       </h1>
       <p className="desc text-center">
         This is a platform designed to help freelancers find work and to help customers
