@@ -13,3 +13,5 @@ export const GET = async (request) => {
     return new Response("Failed to get posts", { status: 500 }); // return a 500 error if something went wrong
   }
 };
+
+export const dynamic = "force dynamic";

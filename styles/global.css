@@ -161,7 +161,7 @@
 }
 
 .filter__bar {
-  @apply mt-28 w-full text-left flex gap-2
+  @apply mt-28 w-full text-left flex gap-2;
 }
 
 

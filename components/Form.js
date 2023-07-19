@@ -23,7 +23,7 @@ import { useState } from "react";
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   const [activeButton, setActiveButton] = useState(""); // state for the active amount button
 
-  const amountOptions = ["< $50", "$50 - $100", "$100 - $200", "$200 - $500", "> $500"];
+  const amountOptions = ["< $50", "$50 - $99", "$100 - $499", "$500 - $4,999", "> 5,000"];
 
   return (
     <section className="w-full max-w-full flex-start flex-col">
@@ -33,7 +33,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
       <p className="desc text-left max-w-md">{type} a job posting to the WorkHubb community</p>
       <form
         onSubmit={handleSubmit}
-        className="mt-10 w-full max-w-2xl flex flex-col gap-7 glassmorphism"
+        className="mt-10 w-full max-w-3xl flex flex-col gap-7 glassmorphism"
       >
         {/** Job title input box */}
         <label>
