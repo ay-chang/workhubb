@@ -172,11 +172,7 @@ const Feed = () => {
         filterPosts={filterPosts}
       />
 
-      {searchText ? (
-        <PostCardList data={searchedResults} />
-      ) : (
-        <PostCardList data={displayedPosts} />
-      )}
+      {searchText ? <PostCardList data={searchedResults} /> : <PostCardList data={allPosts} />}
     </section>
   );
 };
