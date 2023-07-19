@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import PostCard from "./PostCard";
 
 /**
@@ -15,16 +16,32 @@ import PostCard from "./PostCard";
 
 // This component is only being used within the Feed so we can create it
 // within this file and not have to create a new file for it.
-const PostCardList = ({ data, handleTagClick }) => {
+const PostCardList = ({ data }) => {
+  const router = useRouter();
+
+  const handleTagClick = (tag) => {};
+
+  // When post title is clicked send the user to the PostDetails page
+  const handleCardClick = (post) => {
+    router.push(`/post-details?id=${post._id}`);
+  };
+
   return (
     <div className="mt-16 post__layout">
       {data.map((post) => (
-        <PostCard key={post._id} post={post} handleTagClick={handleTagClick} />
+        <PostCard
+          key={post._id}
+          post={post}
+          handleTagClick={handleTagClick}
+          handleCardClick={handleCardClick}
+        />
       ))}
     </div>
   );
 };
 
+// This is the filters bar that sits right above the PostCards. It will allow the user to filter through posts by tags and
+// other parameters which will be added later.
 const FilterBar = ({ setSearchedResults, setDisplayedPosts, filterPosts }) => {
   const [activeButton, setActiveButton] = useState(""); // string, state for the active filter button
 
@@ -82,6 +99,8 @@ const FilterBar = ({ setSearchedResults, setDisplayedPosts, filterPosts }) => {
   );
 };
 
+// This is the main Feed component that contains the PostCardList and the search bar. It also uses the FilterBar component as well
+// as the PostCardList component.
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]); // array, state for all the posts. Only used on initial load
 
@@ -134,8 +153,6 @@ const Feed = () => {
     );
   };
 
-  const handleTagClick = (tag) => {};
-
   return (
     <section className="feed">
       <form onSubmit={handleSearchSubmit} className="relative w-full flex-center">
@@ -156,9 +173,9 @@ const Feed = () => {
       />
 
       {searchText ? (
-        <PostCardList data={searchedResults} handleTagClick={handleTagClick} />
+        <PostCardList data={searchedResults} />
       ) : (
-        <PostCardList data={displayedPosts} handleTagClick={handleTagClick} />
+        <PostCardList data={displayedPosts} />
       )}
     </section>
   );

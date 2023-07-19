@@ -1,7 +1,8 @@
 import Post from "@models/postSchema";
 import { connectToDB } from "@utils/database";
 
-// Routes for editing and deleting posts that belong to the session user
+// Routes for editing and deleting posts that belong to the session user. This makes it so that you can access
+// each individual post by its ID and edit or delete it.
 
 // GET
 export const GET = async (request, { params }) => {

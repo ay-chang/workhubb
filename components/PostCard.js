@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 // TODO: In the profile page, hide edit and delete button and use them as a dropdown menu
 
-const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+const PostCard = ({ post, handleTagClick, handleCardClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
@@ -35,8 +36,18 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       </div>
 
       {/* Section with job title, job description, and tags **/}
-      <p className="mt-6 font-santoshi text-lg font-semibold text-gray-800">{post.title}</p>
-      <p className="my-2 font-santoshi text-sm text-gray-700 line-clamp-4">{post.post}</p>
+      <p
+        onClick={() => handleCardClick && handleCardClick(post)}
+        className="mt-6 font-santoshi text-lg font-semibold text-gray-800 cursor-pointer line-clamp-1"
+      >
+        {post.title}
+      </p>
+      <p
+        onClick={() => handleCardClick && handleCardClick(post)}
+        className="my-2 font-santoshi text-sm text-gray-700 cursor-pointer line-clamp-4"
+      >
+        {post.post}
+      </p>
       <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 absolute bottom-16">
         {post.amount}
       </p>

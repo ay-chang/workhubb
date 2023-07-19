@@ -163,3 +163,22 @@
 .filter__bar {
   @apply mt-28 w-full text-left flex gap-2
 }
+
+
+/* Page Details */
+
+.page__details {
+  @apply w-full;
+}
+
+.post__details {
+  @apply flex gap-10 text-left;
+}
+
+.post__details-desc {
+  @apply w-3/4;
+}
+
+.post__details-sidebar {
+  @apply text-left w-1/4;
+}

@@ -47,8 +47,6 @@ const EditPost = () => {
         }),
       });
 
-      console.log(response);
-
       // If the response is okay, redirect to the homepage
       if (response.ok) {
         router.push("/profile");
