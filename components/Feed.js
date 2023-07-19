@@ -114,9 +114,7 @@ const Feed = () => {
   // This effect will run once when the component is mounted and will fetch all the posts from the API
   // and add posts to the posts array state. This is simplyg retreiving all posts.
   const fetchPosts = async () => {
-    const response = await fetch("/api/post", {
-      cache: "no-store",
-    });
+    const response = await fetch("/api/post");
     const data = await response.json();
 
     setAllPosts(data);
