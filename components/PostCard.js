@@ -8,13 +8,53 @@ import { usePathname, useRouter } from "next/navigation";
 
 // TODO: In the profile page, hide edit and delete button and use them as a dropdown menu
 
-const PostCard = ({ post, handleTagClick, handleCardClick, handleEdit, handleDelete }) => {
+const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+  const [toggleDropdown, setToggleDropdown] = useState(false);
+
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
 
+  // When post title is clicked send the user to the PostDetails page
+  const handleCardClick = (post) => {
+    router.push(`/post-details?id=${post._id}`);
+  };
+
   return (
     <div className="post__card relative">
+      {/* Checking if currenetly logged in user is the creator of the PostCard and checking if they are on the profile page */}
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3 absolute top-0 right-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            onClick={() => setToggleDropdown((prev) => !prev)}
+            className="w-6 h-6 absolute cursor-pointer"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z"
+            />
+          </svg>
+
+          {/* Dropdown menu */}
+          {toggleDropdown && (
+            <div className="dropdown pr-0">
+              <p className="font-inter text-sm cursor-pointer pr-0" onClick={handleEdit}>
+                Edit
+              </p>
+              <p className="font-inter text-sm cursor-pointer pr-0" onClick={handleDelete}>
+                Delete
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Section with imgage, username, and email **/}
       <div className="flex justify-between items-start gap-5">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
@@ -57,18 +97,6 @@ const PostCard = ({ post, handleTagClick, handleCardClick, handleEdit, handleDel
       >
         {post.tag}
       </p>
-
-      {/* Checking if currenetly logged in user is the creator of the PostCard and checking if they are on the profile page */}
-      {session?.user.id === post.creator._id && pathName === "/profile" && (
-        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
-          <p className="font-inter text-sm cursor-pointer" onClick={handleEdit}>
-            Edit
-          </p>
-          <p className="font-inter text-sm cursor-pointer" onClick={handleDelete}>
-            Delete
-          </p>
-        </div>
-      )}
     </div>
   );
 };

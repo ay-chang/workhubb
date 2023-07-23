@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* pre {
+  font-size: 16px; 
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-wrap: break-word; 
+  white-space: pre-wrap; 
+} */
+
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -84,6 +92,21 @@
   @apply bg-gray-100 border-gray-500;
 }
 
+.apply__btn {
+  @apply rounded-lg border-2 border-blue-500 bg-gradient-to-r from-primary-blue to-secondary-blue py-3 px-5 text-white transition-all cursor-pointer
+ text-center text-base font-inter flex items-center justify-center;
+}
+
+.save__btn {
+  @apply rounded-lg border-2 border-secondary-blue bg-transparent py-3 px-5 transition-all cursor-pointer
+  hover:bg-gray-100 text-center text-base font-inter flex items-center justify-center;
+}
+
+.saved__btn {
+  @apply rounded-lg border-2 border-secondary-blue bg-transparent py-3 px-5 transition-all cursor-pointer
+  hover:bg-gray-100 text-center text-base font-inter flex items-center justify-center;
+}
+
 .amount__btn {
   @apply rounded-lg border border-gray-300 bg-transparent py-1 px-5 text-black transition-all hover:bg-gray-100 
   hover:border-gray-400 cursor-pointer;
@@ -113,7 +136,7 @@
 /* Navbar */
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full p-5 rounded-lg bg-white min-w-[210px] 
+  @apply absolute right-0 top-full mt-3 w-full text-right pt-5 rounded-lg bg-white min-w-[210px] 
   flex flex-col gap-2 justify-end items-end;
 }
 
@@ -172,13 +195,13 @@
 }
 
 .post__details {
-  @apply flex gap-10 text-left;
+  @apply flex gap-16 text-left min-h-fit;
 }
 
 .post__details-desc {
-  @apply w-3/4;
+  @apply w-3/5 pt-8 text-gray-900 border-t border-gray-300;
 }
 
 .post__details-sidebar {
-  @apply text-left w-1/4;
+  @apply text-left w-1/3 border border-gray-300 rounded-xl shadow h-96;
 }

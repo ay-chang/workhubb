@@ -29,7 +29,7 @@ const nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3 pb-4 border-b border-gray-200">
+    <nav className="flex-between w-full mb-16 pt-3 pb-4 border-b border-gray-100 z-50">
       <Link href="/" className="flex gap-2 flex-center">
         <p className="text-lg">
           <b className="blue__gradient text-xl">{"</>"}</b> workhubb
@@ -60,6 +60,13 @@ const nav = () => {
                   onClick={() => setToggleDropdown(false)}
                 >
                   My Profile
+                </Link>
+                <Link
+                  href="/saved-posts"
+                  className="dropdown__link"
+                  onClick={() => setToggleDropdown(false)}
+                >
+                  Saved Posts
                 </Link>
                 <button
                   type="button"

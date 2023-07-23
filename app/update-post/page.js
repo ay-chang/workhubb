@@ -13,7 +13,7 @@ const EditPost = () => {
   const [submitting, setSubmitting] = useState(false); // state for submitting form
   const [post, setPost] = useState({ post: "", tag: "", title: "", amount: "" }); // state for post details
 
-  // Fetches the existing post details from the API, only runs when the postId changes
+  // Fetches the existing post details and inputs into the fields from the API, only runs when the postId changes
   useEffect(() => {
     const getPostDetails = async () => {
       const response = await fetch(`/api/post/${postId}`);

@@ -16,6 +16,13 @@ const UserSchema = new Schema({
   image: {
     type: String,
   },
+  savedPosts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+      unique: true,
+    },
+  ],
 });
 
 const User = models.User || model("User", UserSchema);

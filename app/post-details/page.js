@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation"; // lets us navigate to different pages
 import PostDetails from "@components/PostDetails";
 
 const PageDetails = () => {
   const [post, setPost] = useState({ post: "", tag: "", title: "", amount: "" }); // state for post details
+  const [saved, setSaved] = useState(false); // state for whether the post is saved or not
+
+  const { data: session } = useSession(); // session object
   const searchParams = useSearchParams(); // search params object
   const postId = searchParams.get("id"); // get the id from the search params
 
@@ -26,16 +30,47 @@ const PageDetails = () => {
       });
     };
 
+    // check if the post is saved, you need this line (setSaved(checkIf...)) because its sending a response rather than
+    // the state just changing as a simple boolean
     if (postId) getPostDetails();
+    setSaved(checkIfSaved().then((res) => setSaved(res)));
   }, [postId]);
+
+  const handleSave = async () => {
+    try {
+      const response = await fetch(`/api/users/${session.user.id}/saved-posts`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          postId: postId,
+        }),
+      });
+
+      if (response.ok) setSaved((prevSaved) => !prevSaved); // if the response is ok, toggle the saved state
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const checkIfSaved = async () => {
+    try {
+      const response = await fetch(`/api/users/${session.user.id}/saved-posts`);
+      const data = await response.json();
+      for (let i = 0; i < data.length; i++) {
+        if (data[i]._id == postId) {
+          return true;
+        }
+      }
+      return false;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleApply = () => {};
 
-  const handleSave = () => {};
-
   return (
     <div>
-      <PostDetails post={post} />
+      <PostDetails post={post} handleSaveClick={handleSave} isSaved={saved} />
     </div>
   );
 };

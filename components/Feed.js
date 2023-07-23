@@ -21,20 +21,10 @@ const PostCardList = ({ data }) => {
 
   const handleTagClick = (tag) => {};
 
-  // When post title is clicked send the user to the PostDetails page
-  const handleCardClick = (post) => {
-    router.push(`/post-details?id=${post._id}`);
-  };
-
   return (
     <div className="mt-16 post__layout">
       {data.map((post) => (
-        <PostCard
-          key={post._id}
-          post={post}
-          handleTagClick={handleTagClick}
-          handleCardClick={handleCardClick}
-        />
+        <PostCard key={post._id} post={post} handleTagClick={handleTagClick} />
       ))}
     </div>
   );

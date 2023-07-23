@@ -13,6 +13,11 @@ module.exports = {
       },
       colors: {
         "primary-orange": "#FF5722",
+        "primary-blue": "#2c6ef2",
+        "secondary-blue": "#4086f7",
+      },
+      lineClamp: {
+        25: "25",
       },
     },
   },
