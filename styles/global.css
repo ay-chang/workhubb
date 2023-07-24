@@ -4,14 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* pre {
-  font-size: 16px; 
-  line-height: 1.6;
-  max-width: 100%;
-  overflow-wrap: break-word; 
-  white-space: pre-wrap; 
-} */
-
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -21,6 +13,7 @@
   padding: 120px 24px 160px 24px;
   pointer-events: none;
 }
+
 
 .background {
   height: fit-content;
@@ -62,7 +55,7 @@
 }
 
 .footer {
-  @apply text-gray-800 text-base text-center w-full pt-8 mt-48 mb-16 border-t border-gray-200;
+  @apply text-gray-800 text-base text-center w-full pt-8 mt-48 mb-8 border-t border-gray-200;
 }
 
 /* Typography */
@@ -73,6 +66,10 @@
 
 .desc {
   @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+}
+
+.create__post {
+  @apply flex w-full
 }
 
 
@@ -150,7 +147,7 @@
 }
 
 .form__input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 border border-muted-blue;
 }
 
 .glassmorphism {
@@ -158,9 +155,7 @@
   backdrop-blur p-5;
 }
 
-.form__input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 outline-0;
-}
+
 
 
 /* Feed Component */

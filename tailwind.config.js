@@ -15,6 +15,7 @@ module.exports = {
         "primary-orange": "#FF5722",
         "primary-blue": "#2c6ef2",
         "secondary-blue": "#4086f7",
+        "muted-blue": "#92aad1",
       },
       lineClamp: {
         25: "25",
