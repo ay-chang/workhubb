@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
 
 import StartStep from "@components/create-post/startStep";
@@ -29,7 +29,7 @@ const CreatePost = () => {
   const router = useRouter(); // router object
   const { data: session } = useSession(); // session object
 
-  // Make a POST request to the API which is in MongoDB
+  // DESCRIPTION: Make a POST request to the API which is in MongoDB
   const createPost = async (e) => {
     // e.preventDefault();
     setSubmitting(true);

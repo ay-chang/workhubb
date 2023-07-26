@@ -3,7 +3,7 @@ import React from "react";
 const ReviewStep = ({ post, handleSubmit, handleBack }) => {
   return (
     <div className="min-w-full">
-      <h1 className="text-xl font-base pb-8">Review your post</h1>
+      <h1 className="text-xl font-base pb-8 min-w-full">Review your post</h1>
       <p className="text-4xl font-semibold border-b border-gray-200 pb-8 mb-8">{post.title}</p>
       <p className="text-sm leading-5 whitespace-pre-wrap border-b border-gray-200 pb-8 mb-8">
         {post.post}

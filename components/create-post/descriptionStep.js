@@ -1,6 +1,10 @@
 import React from "react";
 
 const DescriptionStep = ({ handleNext, handleBack, post, setPost }) => {
+  const isEmpty = post.post === "";
+  const tooLong = post.post.length > 5000;
+  const tooShort = post.post.length < 10; // REMINDER: Set this back to 50
+
   return (
     <div className="relative gap-16 flex items-start min-h-full w-full">
       <div className="w-1/2">
@@ -19,7 +23,12 @@ const DescriptionStep = ({ handleNext, handleBack, post, setPost }) => {
           </button>
           <button
             onClick={handleNext}
-            className="flex rounded-xl border border-blue-500 bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8"
+            disabled={isEmpty || tooLong || tooShort}
+            className={`flex rounded-xl border ${
+              isEmpty || tooLong || tooShort
+                ? "bg-muted-blue-100 text-muted-blue-300 py-2 px-8 transition ease-linear"
+                : "bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8 transition ease-linear"
+            }`}
           >
             <span className="pr-4">Next</span>
             <svg

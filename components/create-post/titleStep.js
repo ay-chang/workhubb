@@ -1,6 +1,10 @@
 import React from "react";
 
 const TitleStep = ({ handleNext, handleBack, post, setPost }) => {
+  const isEmpty = post.title.trim() === "";
+  const tooLong = post.title.trim().length > 50;
+  const tooShort = post.title.trim().length < 5;
+
   return (
     <div className="relative gap-16 flex items-start min-h-full w-full">
       <div className="w-1/2">
@@ -18,7 +22,12 @@ const TitleStep = ({ handleNext, handleBack, post, setPost }) => {
           </button>
           <button
             onClick={handleNext}
-            className="flex rounded-xl border border-blue-500 bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8"
+            disabled={isEmpty || tooLong || tooShort}
+            className={`flex rounded-xl border ${
+              isEmpty || tooLong || tooShort
+                ? "bg-muted-blue-100 text-muted-blue-300 py-2 px-8 transition ease-linear"
+                : "bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8 transition ease-linear"
+            }`}
           >
             <span className="pr-4">Next</span>
             <svg

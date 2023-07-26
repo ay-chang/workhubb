@@ -21,6 +21,8 @@ const BudgetBox = ({ amount, setPost, post, activeButton, setActiveButton }) => 
 const AmountStep = ({ post, setPost, handleNext, handleBack }) => {
   const [activeButton, setActiveButton] = useState(""); // state for the active amount button
 
+  const isEmpty = post.amount.trim() === "";
+
   const amountOptions = [
     "< $50",
     "$50 - $99",
@@ -44,7 +46,12 @@ const AmountStep = ({ post, setPost, handleNext, handleBack }) => {
           </button>
           <button
             onClick={handleNext}
-            className="flex rounded-xl border border-blue-500 bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8"
+            disabled={isEmpty}
+            className={`flex rounded-xl border ${
+              isEmpty
+                ? "bg-muted-blue-100 text-muted-blue-300 py-2 px-8 transition ease-linear"
+                : "bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8 transition ease-linear"
+            }`}
           >
             <span className="pr-4">Next</span>
             <svg
