@@ -129,6 +129,18 @@
   @apply flex justify-between items-center;
 }
 
+.budget__btn {
+  @apply border border-gray-300 rounded-xl px-4 py-10 text-center hover:border-black transition-all cursor-pointer;
+}
+
+.budget__btn.active {
+  @apply bg-gray-100 border-black;
+}
+
+.tag__btn {
+  @apply border-blue-500 rounded-full w-fit py-1 px-4 bg-gradient-to-r from-primary-blue to-secondary-blue text-white
+}
+
 
 /* Navbar */
 
@@ -143,12 +155,15 @@
 
 /* Form Component */
 .form__textarea {
-  @apply w-full flex rounded-lg h-[200px] mt-2 p-3 text-sm text-gray-500 outline-0;
+  @apply w-full flex rounded-lg h-[300px] mt-2 p-3 text-sm text-gray-500 outline-0 border-2 border-muted-blue-100 hover:border-muted-blue-200 active:border-muted-blue-200;
+  outline: non;
 }
 
 .form__input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 border border-muted-blue;
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 border-2 border-muted-blue-100 hover:border-muted-blue-200 active:border-muted-blue-200;
+  outline: none; /* Remove the default outline */
 }
+
 
 .glassmorphism {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] 

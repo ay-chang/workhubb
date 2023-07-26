@@ -1,34 +1,29 @@
 "use client";
 
-// CreatePostContext.js
+// postContext.js
 import { createContext, useState, useContext } from "react";
 
 // Create the context
-const CreatePostContext = createContext();
+const postContext = createContext();
 
 // Create a custom hook to use the context
-export const useCreatePostContext = () => {
-  return useContext(CreatePostContext);
+export const usePostContext = () => {
+  return useContext(postContext);
 };
 
 // Create the context provider component
-export const CreatePostProvider = ({ children }) => {
-  const [userId, setUserId] = useState(null);
+export const postProvider = ({ children }) => {
+  const [userId, setUserId] = useState(true);
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
 
   return (
-    <CreatePostContext.Provider
+    <postContext.Provider
       value={{
         userId,
-        setUserId,
-        title,
-        setTitle,
-        post,
-        setPost,
       }}
     >
       {children}
-    </CreatePostContext.Provider>
+    </postContext.Provider>
   );
 };

@@ -96,9 +96,7 @@ const PostDetails = ({ post, handleSaveClick, isSaved }) => {
           {/* ITEM: Post Tags */}
           <div>
             <h1 className="pt-10 pb-6 text-xl">Tags and Skills</h1>
-            <p className="border-blue-500 rounded-full w-fit py-1 px-4 bg-gradient-to-r from-primary-blue to-secondary-blue text-white">
-              {post.tag}
-            </p>
+            <p className="tag__btn">{post.tag}</p>
           </div>
         </div>
 
