@@ -17,10 +17,12 @@ const PostSchema = new Schema({
     type: String,
     required: [true, "Amount is required."],
   },
-  tag: {
-    type: String,
-    required: [true, "Tag is required."],
-  },
+  tags: [
+    {
+      type: String,
+      required: [true, "Tags are required."],
+    },
+  ],
 });
 
 const Post = models.Post || model("Post", PostSchema); // if the model exists, use it; otherwise, create it

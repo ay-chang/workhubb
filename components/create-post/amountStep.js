@@ -47,9 +47,9 @@ const AmountStep = ({ post, setPost, handleNext, handleBack }) => {
           <button
             onClick={handleNext}
             disabled={isEmpty}
-            className={`flex rounded-xl border ${
+            className={`flex rounded-xl ${
               isEmpty
-                ? "bg-muted-blue-100 text-muted-blue-300 py-2 px-8 transition ease-linear"
+                ? "bg-muted-blue-200 text-muted-blue-400 py-2 px-8 transition ease-linear"
                 : "bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8 transition ease-linear"
             }`}
           >

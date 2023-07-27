@@ -12,7 +12,7 @@ import ReviewStep from "@components/create-post/reviewStep";
 import AmountStep from "@components/create-post/amountStep";
 
 const CreatePost = () => {
-  const [post, setPost] = useState({ title: "", post: "", tag: "", amount: "" }); // state for post details
+  const [post, setPost] = useState({ title: "", post: "", tags: [], amount: "" }); // state for post details
   const [submitting, setSubmitting] = useState(false); // state for submitting form
 
   // Page States
@@ -48,7 +48,7 @@ const CreatePost = () => {
           title: post.title,
           post: post.post,
           userId: session?.user.id,
-          tag: post.tag,
+          tags: post.tags,
           amount: post.amount,
         }),
       });

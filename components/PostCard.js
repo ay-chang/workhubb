@@ -55,7 +55,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
       )}
 
-      {/* Section with imgage, username, and email **/}
+      {/* Section with image, username, and email **/}
       <div className="flex justify-between items-start gap-5">
         <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
           <Image
@@ -91,12 +91,13 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 absolute bottom-16">
         {post.amount}
       </p>
-      <p
-        className="font-inter text-sm cursor-pointer text-blue-500 absolute bottom-5"
-        onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >
-        {post.tag}
-      </p>
+      <div className="flex gap-2 absolute bottom-5">
+        {post.tags.map((tag) => (
+          <p className="rounded-full py-1 px-4 text-xs cursor-pointer flex items-center gap-1 bg-gradient-to-r from-primary-blue to-secondary-blue text-white">
+            #{tag}
+          </p>
+        ))}
+      </div>
     </div>
   );
 };

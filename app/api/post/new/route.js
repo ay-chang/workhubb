@@ -6,11 +6,11 @@ import { connectToDB } from "@utils/database";
 // the post/new folder is because this is how NextJS knows which url to use.
 
 export const POST = async (request) => {
-  const { userId, title, post, tag, amount } = await request.json(); // Waits for the request to be made and then deconstructs the request body
+  const { userId, title, post, tags, amount } = await request.json(); // Waits for the request to be made and then deconstructs the request body
 
   try {
     await connectToDB(); // first connect to the mongoDB database
-    const newPost = new Post({ creator: userId, title, post, tag, amount }); // get the post details from
+    const newPost = new Post({ creator: userId, title, post, tags, amount }); // get the post details from
     await newPost.save(); // save the post to the database
 
     return new Response(JSON.stringify(newPost), { status: 201 });

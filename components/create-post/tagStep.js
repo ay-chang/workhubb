@@ -4,11 +4,30 @@ import { useState, useEffect } from "react";
 import { tags } from "@utils/tags";
 
 const TagStep = ({ handleNext, handleBack, post, setPost }) => {
-  const isEmpty = post.tag === "";
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-  useEffect(() => {
-    console.log(tags[0]);
-  }, []);
+  const isEmpty = searchText === "";
+  const isSelectedTagsEmpty = selectedTags.length === 0;
+
+  // When a tag is clicked, add it to the selected tags section. If a tag is already selected and is clicked
+  // then the tag is removed. Additionally, the post.tag array is updated to reflect the selected tags.
+  const handleTagClick = (tag) => () => {
+    if (!selectedTags.includes(tag)) {
+      setSelectedTags([...selectedTags, tag]);
+      post.tags.push(tag);
+    } else {
+      setSelectedTags(selectedTags.filter((t) => t !== tag));
+      post.tags.pop(tag);
+    }
+    setSearchText("");
+  };
+
+  // The tags that are displayed are filtered using regex
+  const filteredTags = tags.filter((tag) => {
+    const regex = new RegExp(`^${searchText}`, "i"); // 'i' flag for case-insensitive search
+    return regex.test(tag);
+  });
 
   return (
     <div className="relative gap-16 flex items-start min-h-full w-full">
@@ -24,10 +43,10 @@ const TagStep = ({ handleNext, handleBack, post, setPost }) => {
           </button>
           <button
             onClick={handleNext}
-            disabled={isEmpty}
-            className={`flex rounded-xl border ${
-              isEmpty
-                ? "bg-muted-blue-100 text-muted-blue-300 py-2 px-8 transition ease-linear"
+            disabled={isSelectedTagsEmpty}
+            className={`flex rounded-xl ${
+              isSelectedTagsEmpty
+                ? "bg-muted-blue-200 text-muted-blue-400 py-2 px-8 transition ease-linear"
                 : "bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8 transition ease-linear"
             }`}
           >
@@ -56,12 +75,65 @@ const TagStep = ({ handleNext, handleBack, post, setPost }) => {
           Select your tags here
         </span>
         <input
-          value={post.tag}
-          onChange={(e) => setPost({ ...post, tag: e.target.value })}
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
           placeholder="Enter tags separated by commas"
           required
-          className="form__input"
+          className={`form__input ${isEmpty ? "" : ""}`}
         />
+        {!isEmpty && (
+          <div className="text-left px-2 flex flex-wrap gap-2 pt-4">
+            {filteredTags.map((tag) => (
+              <div
+                onClick={handleTagClick(tag)}
+                className="rounded-full py-1 px-4 text-xs cursor-pointer flex items-center gap-1 bg-muted-blue-200 hover:bg-muted-blue-300"
+              >
+                <p key={tag} className="">
+                  {tag}
+                </p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-5 h-5"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+                </svg>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* ITEM: Selected Tags */}
+        <div className="pt-8">
+          <h1 className="pb-4">Selected Tags</h1>
+          <div className="flex flex-wrap gap-2">
+            {selectedTags.map((tag) => (
+              <div
+                onClick={handleTagClick(tag)}
+                className="rounded-full py-1 px-4 text-xs cursor-pointer flex items-center gap-1 bg-gradient-to-r from-primary-blue to-secondary-blue text-white"
+              >
+                <p className="">{tag}</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

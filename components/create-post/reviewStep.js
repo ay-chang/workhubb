@@ -10,7 +10,13 @@ const ReviewStep = ({ post, handleSubmit, handleBack }) => {
       </p>
       <div className="border-b gray-200 pb-8 mb-8">
         <p className="pb-4 font-semibold">Tags:</p>
-        <p className="tag__btn text-sm">{post.tag}</p>
+        <div className="flex gap-2">
+          {post.tags.map((tag) => (
+            <p className="rounded-full py-1 px-4 text-xs cursor-pointer flex items-center gap-1 bg-gradient-to-r from-primary-blue to-secondary-blue text-white">
+              #{tag}
+            </p>
+          ))}
+        </div>
       </div>
       <div className="pb-32">
         <p className="pb-4 font-semibold">Budget</p>
