@@ -9,9 +9,6 @@ import PostCard from "./PostCard";
  * that contains both the PostCardList and the search bar. It also contains the filter selectors above the
  * PostCardList that will allow the user to filter the posts based on the tag.
  *
- * TODO:
- * - Add filter selectors
- * - Figure out how to use an .SVG
  */
 
 // This component is only being used within the Feed so we can create it
@@ -118,15 +115,19 @@ const Feed = () => {
 
   // DESCRIPTION: Search for posts based on the search text and return the results. The search bar uses regex to match what
   // the user is typing to the username, tag, or post.
-  const filterPosts = (searchtext, mode) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
+  const filterPosts = (searchText, mode) => {
+    const regex = new RegExp(searchText, "i"); // 'i' flag for case-insensitive search
 
     if (mode === "t") {
-      return allPosts.filter((item) => regex.test(item.tag));
+      // Filter based on tag
+      return allPosts.filter((item) => item.tags.some((tag) => regex.test(tag)));
     } else if (mode === "a") {
+      // Filter based on any property: username, tag, or post
       return allPosts.filter(
         (item) =>
-          regex.test(item.creator.username) || regex.test(item.tag) || regex.test(item.post)
+          regex.test(item.creator.username) ||
+          item.tags.some((tag) => regex.test(tag)) ||
+          regex.test(item.post)
       );
     }
   };
@@ -154,6 +155,22 @@ const Feed = () => {
           required
           className="search__input peer"
         />
+        <button className="absolute lg:right-18% right-2% text-gray-400">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+            />
+          </svg>
+        </button>
       </form>
 
       <FilterBar

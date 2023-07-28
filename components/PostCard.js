@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
@@ -88,14 +88,14 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       >
         {post.post}
       </p>
-      <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 absolute bottom-16">
+      <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 my-2">
         {post.amount}
       </p>
-      <div className="flex gap-2 absolute bottom-5">
+
+      {/* FIXME: The button and line layout is all messed up**/}
+      <div className="my-2 font-santoshi text-xs text-gray-700 cursor-pointer flex flex-wrap gap-2">
         {post.tags.map((tag) => (
-          <p className="rounded-full py-1 px-4 text-xs cursor-pointer flex items-center gap-1 bg-gradient-to-r from-primary-blue to-secondary-blue text-white">
-            #{tag}
-          </p>
+          <p className="tag__btn">#{tag}</p>
         ))}
       </div>
     </div>

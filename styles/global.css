@@ -138,7 +138,7 @@
 }
 
 .tag__btn {
-  @apply border-blue-500 rounded-full w-fit py-1 px-4 bg-gradient-to-r from-primary-blue to-secondary-blue text-white
+  @apply border-blue-500 rounded-full w-fit py-1 px-4 bg-gradient-to-r from-primary-blue to-secondary-blue text-white text-sm;
 }
 
 
@@ -185,7 +185,7 @@
 }
 
 .post__card {
-  @apply break-inside-avoid rounded-lg border border-gray-300 bg-white/20 my-4
+  @apply rounded-lg border border-gray-300 bg-white/20 my-4
   p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-80 shadow-sm;
 }
 

@@ -23,6 +23,10 @@ module.exports = {
       lineClamp: {
         25: "25",
       },
+      spacing: {
+        "18%": "18%",
+        "2%": "2%",
+      },
     },
   },
   plugins: [],

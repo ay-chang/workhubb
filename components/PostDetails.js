@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 
 const FeatureCard = ({ title, desc, img }) => {
   return (
@@ -96,7 +96,11 @@ const PostDetails = ({ post, handleSaveClick, isSaved }) => {
           {/* ITEM: Post Tags */}
           <div>
             <h1 className="pt-10 pb-6 text-xl">Tags and Skills</h1>
-            <p className="tag__btn">{post.tag}</p>
+            <div className="text-sm flex gap-2">
+              {post.tags.map((tag) => (
+                <p className="tag__btn">#{tag}</p>
+              ))}
+            </div>
           </div>
         </div>
 

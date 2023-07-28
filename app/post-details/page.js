@@ -5,15 +5,25 @@ import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation"; // lets us navigate to different pages
 import PostDetails from "@components/PostDetails";
 
+/**
+ * NOTE: This is the page that displays the post details and allows the user to either apply or save the
+ * post to theirsaved posts section in their profile. This page is called when a user clicks on one of the post
+ * cards either in feed or elsewhere. This file has to fetch for the post details from "/api/post/${postId}"
+ * which is also the route used for retreiving post details for other components. This file also sends a PATCH
+ * requests that updates the saved-posts array within the dataset by adding the saved posts. Additionally the
+ * file also checks for whether or not the post is saved so that it can set the state of the saved button to either
+ * activer or inactive.
+ */
+
 const PageDetails = () => {
-  const [post, setPost] = useState({ post: "", tag: "", title: "", amount: "" }); // state for post details
+  const [post, setPost] = useState({ post: "", tags: [], title: "", amount: "" }); // state for post details
   const [saved, setSaved] = useState(false); // state for whether the post is saved or not
 
   const { data: session } = useSession(); // session object
   const searchParams = useSearchParams(); // search params object
   const postId = searchParams.get("id"); // get the id from the search params
 
-  // REMINDER: Fetches the existing post details from the API, only runs when the postId changes
+  // DESCRIPTION: Fetches the existing post details from the API, only runs when the postId changes
   // When the PostCard title is clicked, the current url will be at .../post-details?id=...
   // which is when this PageDetails file is called. Immediately the useEffect is run to fetch
   // the post details. This /api/post/${postId} is what calls the route.js file within api/post/[id]
@@ -25,7 +35,7 @@ const PageDetails = () => {
       setPost({
         title: data.title,
         post: data.post,
-        tag: data.tag,
+        tags: data.tags,
         amount: data.amount,
       });
     };
@@ -36,6 +46,8 @@ const PageDetails = () => {
     setSaved(checkIfSaved().then((res) => setSaved(res)));
   }, [postId]);
 
+  // DESCRIPTION: The function sends a PATCH request to update the saved-posts array within the dataset, it updates the array by
+  // adding another post to the array by its postID
   const handleSave = async () => {
     try {
       const response = await fetch(`/api/users/${session.user.id}/saved-posts`, {
@@ -51,6 +63,9 @@ const PageDetails = () => {
     }
   };
 
+  // DESCRIPTION: Sends a GET request to retrive the posts that are in the saved-posts array within the dataset and then interate
+  // through them to check if the current post we are in, if that id matches with one of the ID's in the saved-posts array.
+  // if so then return true, else return false.
   const checkIfSaved = async () => {
     try {
       const response = await fetch(`/api/users/${session.user.id}/saved-posts`);
