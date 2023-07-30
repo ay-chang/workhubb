@@ -54,8 +54,9 @@ const nav = () => {
             </div>
             {toggleDropdown && (
               <div className="dropdown">
+                {/* FIXME: change test-profile back to just profile **/}
                 <Link
-                  href="/profile"
+                  href="/test-profile"
                   className="dropdown__link"
                   onClick={() => setToggleDropdown(false)}
                 >

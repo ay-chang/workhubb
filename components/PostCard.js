@@ -21,7 +21,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   };
 
   return (
-    <div className="post__card relative">
+    <div className="post__card relative overflow-hidden">
       {/* Checking if currenetly logged in user is the creator of the PostCard and checking if they are on the profile page */}
       {session?.user.id === post.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3 absolute top-0 right-4">
@@ -95,7 +95,7 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       {/* FIXME: The button and line layout is all messed up**/}
       <div className="my-2 font-santoshi text-xs text-gray-700 cursor-pointer flex flex-wrap gap-2">
         {post.tags.map((tag) => (
-          <p className="tag__btn">#{tag}</p>
+          <p className="tag__btn mb-4">#{tag}</p>
         ))}
       </div>
     </div>
