@@ -16,9 +16,10 @@ module.exports = {
         "primary-blue": "#2c6ef2",
         "secondary-blue": "#4086f7",
         "muted-blue-100": "#e0e3e8",
-        "muted-blue-200": "#dce7f2",
-        "muted-blue-300": "#ccdef0",
-        "muted-blue-400": "#bbd4ed",
+        "muted-blue-200": "#e6f2fc",
+        "muted-blue-300": "#d9ebfa",
+        "muted-blue-400": "#d1eaff",
+        "muted-blue-500": "#c2e3ff",
       },
       lineClamp: {
         25: "25",

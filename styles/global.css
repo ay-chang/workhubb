@@ -80,6 +80,11 @@
   hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center;
 }
 
+.blue__btn {
+  @apply rounded-lg border border-muted-blue-200 bg-muted-blue-200 py-1.5 px-5 text-blue-500 transition-all
+  hover:bg-muted-blue-300 text-center text-sm font-inter flex items-center justify-center;
+}
+
 .outline__btn {
   @apply rounded-lg border border-gray-300 bg-transparent py-1.5 px-5 text-black transition-all cursor-pointer
   hover:bg-gray-100 hover:border-gray-400 text-center text-sm font-inter flex items-center justify-center;
@@ -145,7 +150,7 @@
 /* Navbar */
 
 .dropdown {
-  @apply absolute right-0 top-full mt-3 w-full text-right pt-5 rounded-lg bg-white min-w-[210px] 
+  @apply absolute right-0 top-full mt-3 w-full text-left pt-5 rounded-lg bg-white min-w-[210px] 
   flex flex-col gap-2 justify-end items-end;
 }
 
