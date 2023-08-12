@@ -1,59 +1,96 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import Info from "@components/profile/Info";
+import Billing from "@components/profile/Billing";
+import Password from "@components/profile/Password";
 
-import Profile from "@components/Profile";
+const Profile = () => {
+  const [currentItem, setItem] = useState("Info");
 
-const MyProfile = () => {
-  const router = useRouter();
-  const { data: session } = useSession();
-  const [posts, setPosts] = useState([]);
+  const profileItems = [
+    "Info",
+    "Billing",
+    "Password",
+    "Membership",
+    "Teams",
+    "Notification",
+    "Settings",
+  ];
 
-  useEffect(() => {
-    // DESCRIPTION: This function will fetch the posts from the API that match with the session user id
-    // and set the posts state to the data returned from the API. response is fetched from the
-    // api/users/[id]/posts route.
-    const fetchPosts = async () => {
-      const response = await fetch(`/api/users/${session.user.id}/posts`);
-      const data = await response.json();
-      setPosts(data);
-    };
-    if (session?.user.id) fetchPosts();
-  }, []);
-
-  const handleEdit = (post) => {
-    router.push(`/update-post?id=${post._id}`);
-  };
-
-  const handleDelete = (post) => {
-    const hasConfirmed = confirm("Are you sure you want to delete this post?");
-
-    if (hasConfirmed) {
-      try {
-        const response = fetch(`/api/post/${post._id.toString()}`, {
-          method: "DELETE",
-        });
-        const filteredPost = posts.filter((p) => p._id !== post._id);
-        setPosts(filteredPost);
-      } catch {
-        console.error(error);
-      }
-    }
-  };
+  const { data: session } = useSession(); // uses current session to check if user is logged in
 
   return (
-    <div>
-      <Profile
-        name="My"
-        desc="Welcome to your personanlized profile page"
-        data={posts}
-        handleEdit={handleEdit}
-        handleDelete={handleDelete}
-      />
+    <div className="w-full flex">
+      {/* Sidebar */}
+      <div className="w-1/4 mr-8 px-4 py-4 rounded-lg flex flex-col gap-4">
+        <button
+          onClick={() => setItem("Info")}
+          className={`text-left ${
+            currentItem === "Info" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          My Info
+        </button>
+        <button
+          onClick={() => setItem("Billing")}
+          className={`text-left ${
+            currentItem === "Billing" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          Billing & Payment
+        </button>
+        <button
+          onClick={() => setItem("Password")}
+          className={`text-left ${
+            currentItem === "Password" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          Password & Security
+        </button>
+        <button
+          onClick={() => setItem("Membership")}
+          className={`text-left ${
+            currentItem === "Membership" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          Membership Benefits
+        </button>
+        <button
+          onClick={() => setItem("Teams")}
+          className={`text-left ${
+            currentItem === "Teams" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          Teams
+        </button>
+        <button
+          onClick={() => setItem("Notification")}
+          className={`text-left ${
+            currentItem === "Notification" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          Notification Settings
+        </button>
+        <button
+          onClick={() => setItem("Settings")}
+          className={`text-left ${
+            currentItem === "Settings" ? "border-l-4 border-blue-400 w-fit pl-1" : ""
+          }`}
+        >
+          Settings
+        </button>
+      </div>
+
+      {/* Main Content */}
+      <div className="w-3/4">
+        {currentItem === "Info" && <Info session={session} />}
+        {currentItem === "Billing" && <Billing />}
+        {currentItem === "Password" && <Password />}
+      </div>
     </div>
   );
 };
 
-export default MyProfile;
+export default Profile;

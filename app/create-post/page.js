@@ -4,12 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-import StartStep from "@components/create-post/startStep";
-import TitleStep from "@components/create-post/titleStep";
-import DescriptionStep from "@components/create-post/descriptionStep";
-import TagStep from "@components/create-post/tagStep";
-import ReviewStep from "@components/create-post/reviewStep";
-import AmountStep from "@components/create-post/amountStep";
+import StartStep from "@components/create-post/StartStep";
+import TitleStep from "@components/create-post/TitleStep";
+import DescriptionStep from "@components/create-post/DescriptionStep";
+import TagStep from "@components/create-post/TagStep";
+import ReviewStep from "@components/create-post/ReviewStep";
+import AmountStep from "@components/create-post/AmountStep";
 
 const CreatePost = () => {
   const [post, setPost] = useState({ title: "", post: "", tags: [], amount: "" }); // state for post details

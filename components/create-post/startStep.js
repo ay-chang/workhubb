@@ -1,6 +1,6 @@
 import React from "react";
 
-const start = ({ handleNext }) => {
+const startStep = ({ handleNext }) => {
   return (
     <div className="relative gap-16 flex items-start min-h-full">
       <div className="w-1/2">
@@ -63,4 +63,4 @@ const start = ({ handleNext }) => {
   );
 };
 
-export default start;
+export default startStep;

@@ -1,24 +1,11 @@
-"use client";
+import React from "react";
+import Link from "next/link";
 
-import { useSession } from "next-auth/react";
-
-const Profile = () => {
-  const { data: session } = useSession(); // uses current session to check if user is logged in
-
+const Info = ({ session }) => {
   return (
-    <div className="w-full flex">
-      {/* ITEM: Sidebar */}
-      <div className="w-1/4 mr-8 px-4 py-4 rounded-lg flex flex-col gap-4">
-        <p>My Info</p>
-        <p>Billing & Payment</p>
-        <p>Password & Security</p>
-        <p>Membership Benefits</p>
-        <p>Teams</p>
-        <p>Notification Settings</p>
-        <p>Settings</p>
-      </div>
+    <div>
       {/* ITEM: Main */}
-      <div className="w-3/4">
+      <div className="">
         {/* ITEM: Top Part */}
         <div className="border-b border-gray-200">
           <p className="text-3xl">{session.user.name}</p>
@@ -48,7 +35,7 @@ const Profile = () => {
               })}
             </div>
             <div className="flex gap-8 pt-8 pb-8">
-              <button className="flex gap-2 text-base items-center">
+              <Link href={"/saved-posts"} className="flex gap-2 text-base items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -64,8 +51,10 @@ const Profile = () => {
                   />
                 </svg>
                 Saved Posts
-              </button>
-              <button className="blue__btn">Create Post</button>
+              </Link>
+              <Link href={"/create-post"} className="blue__btn">
+                Create Post
+              </Link>
             </div>
           </div>
         </div>
@@ -101,4 +90,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Info;
