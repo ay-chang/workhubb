@@ -1,5 +1,6 @@
 import React from "react";
 
+// Component for cards, ex: Experience Level, Hourly Rate, etc.
 const FeatureCard = ({ title, desc, img }) => {
   return (
     <div className="border border-gray-300 rounded-lg px-4 py-4 w-56">
@@ -10,7 +11,7 @@ const FeatureCard = ({ title, desc, img }) => {
   );
 };
 
-const PostDetails = ({ post, handleSaveClick, isSaved }) => {
+const PostDetails = ({ post, handleSaveClick, handleApplyClick, isSaved }) => {
   return (
     <div className="page__details">
       <p className="text-3xl font-semibold pb-2">{post.title}</p>
@@ -106,7 +107,9 @@ const PostDetails = ({ post, handleSaveClick, isSaved }) => {
 
         {/* ITEM: Post Side Bar */}
         <div className="post__details-sidebar relative">
-          <p className="apply__btn mt-5 mb-4 mx-4">Apply</p>
+          <p onClick={handleApplyClick} className="apply__btn mt-5 mb-4 mx-4">
+            Apply
+          </p>
           {isSaved ? (
             <p onClick={handleSaveClick} className="saved__btn my-4 mx-4 text-primary-blue">
               <svg

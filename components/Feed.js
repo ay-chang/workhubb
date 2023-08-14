@@ -11,7 +11,7 @@ import PostCard from "./PostCard";
  *
  */
 
-// This component is only being used within the Feed so we can create it
+// DESCRIPTION: This component is only being used within the Feed so we can create it
 // within this file and not have to create a new file for it.
 const PostCardList = ({ data }) => {
   const router = useRouter();

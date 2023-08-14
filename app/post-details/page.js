@@ -20,31 +20,53 @@ const PageDetails = () => {
   const [saved, setSaved] = useState(false); // state for whether the post is saved or not
 
   const { data: session } = useSession(); // session object
+  const router = useRouter(); // router object
   const searchParams = useSearchParams(); // search params object
   const postId = searchParams.get("id"); // get the id from the search params
 
   // DESCRIPTION: Fetches the existing post details from the API, only runs when the postId changes
-  // When the PostCard title is clicked, the current url will be at .../post-details?id=...
+  // When the PostCard title is clicked, the current url will be set to .../post-details?id=...
   // which is when this PageDetails file is called. Immediately the useEffect is run to fetch
   // the post details. This /api/post/${postId} is what calls the route.js file within api/post/[id]
   // that fetches this data from the database.
   useEffect(() => {
     const getPostDetails = async () => {
-      const response = await fetch(`/api/post/${postId}`);
-      const data = await response.json();
-      setPost({
-        title: data.title,
-        post: data.post,
-        tags: data.tags,
-        amount: data.amount,
-      });
+      try {
+        const response = await fetch(`/api/post/${postId}`);
+        const data = await response.json();
+        setPost({
+          title: data.title,
+          post: data.post,
+          tags: data.tags,
+          amount: data.amount,
+        });
+        console.log("Set Post Details");
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    // check if the post is saved, you need this line (setSaved(checkIf...)) because its sending a response rather than
-    // the state just changing as a simple boolean
-    if (postId) getPostDetails();
-    setSaved(checkIfSaved().then((res) => setSaved(res)));
-  }, [postId]);
+    if (postId) {
+      getPostDetails();
+    }
+  }, []);
+
+  // DESCRIPTION: Imediately check if the post is saved to set the saved state
+  useEffect(() => {
+    const checkIfSavedAndSetState = async () => {
+      if (session && postId) {
+        const isSaved = await checkIfSaved();
+        setSaved(isSaved);
+      }
+    };
+
+    checkIfSavedAndSetState();
+  }, [session, postId]);
+
+  // DESCRIPTION: The function sends a GET request to the /api/post/${postId} route which fetches the post details
+  const handleApply = () => {
+    router.push(`/apply?id=${postId}`);
+  };
 
   // DESCRIPTION: The function sends a PATCH request to update the saved-posts array within the dataset, it updates the array by
   // adding another post to the array by its postID
@@ -81,11 +103,14 @@ const PageDetails = () => {
     }
   };
 
-  const handleApply = () => {};
-
   return (
     <div>
-      <PostDetails post={post} handleSaveClick={handleSave} isSaved={saved} />
+      <PostDetails
+        post={post}
+        handleSaveClick={handleSave}
+        handleApplyClick={handleApply}
+        isSaved={saved}
+      />
     </div>
   );
 };

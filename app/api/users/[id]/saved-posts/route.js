@@ -27,6 +27,8 @@ export const GET = async (request, { params }) => {
   }
 };
 
+// DESCRIPTION: This is the PATCH route to update the user's saved posts, it adds to the savedPosts array within mongodb
+// if the post is not already saved, and removes from the savedPosts array if the post is already saved.
 export const PATCH = async (request, { params }) => {
   try {
     const { postId } = await request.json(); // Destructure `postId` from the request body
