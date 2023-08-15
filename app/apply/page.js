@@ -8,6 +8,10 @@ import Apply from "@components/Apply";
 
 const ApplyPage = () => {
   const [post, setPost] = useState({ post: "", tags: [], title: "", amount: "" }); // state for post details
+  const [applicationDetails, setApplicationDetails] = useState({
+    coverletter: "",
+    pastExperience: "",
+  }); // state for application details
 
   const { data: session } = useSession(); // session object
   const searchParams = useSearchParams(); // search params object
@@ -35,7 +39,11 @@ const ApplyPage = () => {
 
   return (
     <div className="w-full">
-      <Apply post={post} />
+      <Apply
+        post={post}
+        applicationDetails={applicationDetails}
+        setApplicationDetails={setApplicationDetails}
+      />
     </div>
   );
 };
