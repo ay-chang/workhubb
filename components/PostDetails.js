@@ -1,15 +1,5 @@
 import React from "react";
-
-// Component for cards, ex: Experience Level, Hourly Rate, etc.
-const FeatureCard = ({ title, desc, img }) => {
-  return (
-    <div className="border border-gray-300 rounded-lg px-4 py-4 w-56">
-      <div className="feature__card-img pb-4">{img}</div>
-      <p className="text-sm font-base">{title}</p>
-      <p className="text-xs text-gray-500">{desc}</p>
-    </div>
-  );
-};
+import FeatureCard from "@components/FeatureCard";
 
 const PostDetails = ({ post, handleSaveClick, handleApplyClick, isSaved }) => {
   return (
@@ -35,6 +25,7 @@ const PostDetails = ({ post, handleSaveClick, handleApplyClick, isSaved }) => {
               <FeatureCard
                 title="Intermediate"
                 desc="Experience Level"
+                width="56"
                 img={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +46,7 @@ const PostDetails = ({ post, handleSaveClick, handleApplyClick, isSaved }) => {
               <FeatureCard
                 title="Less than 30 hours a week"
                 desc="Hourly"
+                width="56"
                 img={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -75,6 +67,7 @@ const PostDetails = ({ post, handleSaveClick, handleApplyClick, isSaved }) => {
               <FeatureCard
                 title="$20.00 - $30.00 / hr"
                 desc="Hourly Rate"
+                width="56"
                 img={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
