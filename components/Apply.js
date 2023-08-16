@@ -19,9 +19,9 @@ const Apply = ({ post, applicationDetails, setApplicationDetails }) => {
 
       <div className="flex gap-16">
         {/* Application Details */}
-        <div className="w-2/3">
+        <div className="w-3/5">
           {/* Introduction and Relevant Background */}
-          <div className="w-full border-b pb-8 border-gray-200">
+          <div className="w-full border-b pb-8 mb-8 border-gray-200">
             <h1 className="text-xl pb-8">Introduction and Relevant Background</h1>
             {/* ITEM: Cover Letter */}
             <div className="pb-4">
@@ -55,11 +55,88 @@ const Apply = ({ post, applicationDetails, setApplicationDetails }) => {
                 className="apply__form__textarea"
               />
             </div>
+            {/* ITEM: Attach File */}
+            <div>
+              <p className="text-sm">Attach File</p>
+              <p
+                className="border border-dashed mt-2 text-sm bg-muted-blue-100 border-blue-300 
+              text-center py-8 rounded-lg"
+              >
+                Drag or <u className="text-blue-500 cursor-pointer">upload</u> a file
+              </p>
+            </div>
+          </div>
+          {/* Terms */}
+          <div className="border-b border-gray-300">
+            <h1 className="text-xl pb-8">Terms</h1>
+            {/* ITEM: Hourly Rate FIXME: Convert to a Slider */}
+            <div className="flex justify-between items-center pb-8">
+              <div className="py-0">
+                <p className="text-sm">What is the Rate you would like to bid for this job?</p>
+                <p className="text-sm text-gray-500">
+                  Client Budget: <b>$25.00/hr</b>
+                </p>
+              </div>
+              <textarea
+                value={`$30.00`}
+                onChange={(e) =>
+                  setApplicationDetails({
+                    ...applicationDetails,
+                    rate: e.target.value,
+                  })
+                }
+                placeholder="0"
+                required
+                className="number__form__textarea"
+              />
+            </div>
+            {/* ITEM: Weeks to Complete FIXME: Convert to a Slider */}
+            <div className="flex justify-between items-center pb-10">
+              <div className="py-0">
+                <p className="text-sm">Estimated Timeline</p>
+                <p className="text-sm text-gray-500">
+                  Client Timeline: <b>45 Weeks</b>
+                </p>
+              </div>
+              <textarea
+                value={applicationDetails.weeks}
+                onChange={(e) =>
+                  setApplicationDetails({
+                    ...applicationDetails,
+                    weeks: e.target.value,
+                  })
+                }
+                placeholder="0"
+                required
+                className="number__form__textarea"
+              />
+            </div>
+          </div>
+
+          {/* Project Plan */}
+          <div>
+            <h1 className="text-xl pb-8 pt-8">Project Plan</h1>
+            {/* ITEM: Project Plan */}
+            <div className="pb-4">
+              <p className="text-sm">Describe your plan for the project</p>
+              <textarea
+                value={applicationDetails.projectPlan}
+                onChange={(e) =>
+                  setApplicationDetails({
+                    ...applicationDetails,
+                    projectPlan: e.target.value,
+                  })
+                }
+                placeholder="Type here"
+                required
+                className="apply__form__textarea"
+              />
+            </div>
           </div>
         </div>
 
         {/* Post Details */}
-        <div className="w-1/3 border border-gray-300 pt-5 px-4 rounded-xl shadow">
+        <div className="w-1/3 border border-gray-300 pt-5 px-4 rounded-xl shadow h-fit">
           <h1 className="pb-8 text-2xl">Job Details</h1>
           <p className="text-xl">{post.title}</p>
           <div className="flex text-xs pb-4 text-gray-500">
@@ -137,7 +214,7 @@ const Apply = ({ post, applicationDetails, setApplicationDetails }) => {
           {/* ITEM: Tags and Skills */}
           <div className="pb-4">
             <p className="pb-2">Tags and Skills</p>
-            <div className="flex flex-wrap gap-1 w-full">
+            <div className="flex flex-wrap gap-2 w-full">
               {post.tags.map((tag) => (
                 <p className="tag__btn">{tag}</p>
               ))}

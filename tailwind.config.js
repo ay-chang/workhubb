@@ -15,7 +15,7 @@ module.exports = {
         "primary-orange": "#FF5722",
         "primary-blue": "#2c6ef2",
         "secondary-blue": "#4086f7",
-        "muted-blue-100": "#e0e3e8",
+        "muted-blue-100": "#f0f7fc",
         "muted-blue-200": "#e6f2fc",
         "muted-blue-300": "#d9ebfa",
         "muted-blue-400": "#d1eaff",

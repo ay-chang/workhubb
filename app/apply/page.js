@@ -11,6 +11,9 @@ const ApplyPage = () => {
   const [applicationDetails, setApplicationDetails] = useState({
     coverletter: "",
     pastExperience: "",
+    projectPlan: "",
+    rate: 0,
+    weeks: 0,
   }); // state for application details
 
   const { data: session } = useSession(); // session object
