@@ -117,7 +117,7 @@ const Apply = ({ post, applicationDetails, setApplicationDetails }) => {
           <div>
             <h1 className="text-xl pb-8 pt-8">Project Plan</h1>
             {/* ITEM: Project Plan */}
-            <div className="pb-4">
+            <div className="pb-16">
               <p className="text-sm">Describe your plan for the project</p>
               <textarea
                 value={applicationDetails.projectPlan}
@@ -132,6 +132,17 @@ const Apply = ({ post, applicationDetails, setApplicationDetails }) => {
                 className="apply__form__textarea"
               />
             </div>
+          </div>
+
+          {/* Submit Buttons */}
+          <div className="flex gap-12">
+            <button
+              className="rounded-lg border-2 border-blue-500 bg-gradient-to-r from-primary-blue to-secondary-blue py-2 px-10 
+            text-white transition-all cursor-pointer text-center text-base font-inter flex items-center justify-center;"
+            >
+              Send application
+            </button>
+            <button className="text-blue-500 font-base">Cancel</button>
           </div>
         </div>
 
