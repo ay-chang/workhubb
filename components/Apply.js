@@ -67,7 +67,7 @@ const Apply = ({ post, applicationDetails, setApplicationDetails }) => {
             </div>
           </div>
           {/* Terms */}
-          <div className="border-b border-gray-300">
+          <div className="border-b border-gray-200">
             <h1 className="text-xl pb-8">Terms</h1>
             {/* ITEM: Hourly Rate FIXME: Convert to a Slider */}
             <div className="flex justify-between items-center pb-8">

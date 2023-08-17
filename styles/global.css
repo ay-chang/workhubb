@@ -194,25 +194,25 @@
 /* Feed Component */
 
 .feed {
-  @apply mt-16 mx-auto w-full flex flex-col justify-center items-center gap-2;
+  @apply mt-16 mx-auto w-full flex justify-center gap-8;
 }
 
 .search__input {
-  @apply block lg:w-2/3 w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg 
+  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 font-satoshi pl-5 pr-12 text-sm shadow-lg 
   font-medium focus:border-gray-300 focus:outline-none focus:ring-0;
 }
 
 .post__card {
-  @apply rounded-lg border border-gray-300 bg-white/20 my-4
-  p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-80 shadow-sm;
+  @apply rounded-xl border border-gray-300 bg-white/20 my-4
+  p-6 backdrop-blur-lg backdrop-filter w-full h-80 shadow-sm;
 }
 
 .post__layout {
-  @apply py-0 gap-6 my-0 w-full grid md:grid-cols-2 lg:grid-cols-3;
+  @apply py-0 gap-6 my-0 w-full;
 }
 
 .filter__bar {
-  @apply mt-28 w-full text-left flex gap-2;
+  @apply mt-4 mb-8 w-full text-left flex gap-2;
 }
 
 
