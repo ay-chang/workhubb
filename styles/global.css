@@ -204,7 +204,7 @@
 
 .post__card {
   @apply rounded-xl border border-gray-300 bg-white/20 my-4
-  p-6 pb-4 backdrop-blur-lg backdrop-filter w-full h-80 shadow-sm;
+  p-6 backdrop-blur-lg backdrop-filter w-full h-80 shadow-sm;
 }
 
 .post__layout {

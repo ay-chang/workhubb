@@ -198,7 +198,7 @@ const testFeed = () => {
       {/* ITEM: Sidebar */}
       <div className="w-3/10 text-sm">
         {/* ITEM: Profile */}
-        <div className="border border-gray-300 rounded-xl px-4 py-4 text-left mb-4">
+        <div className="border border-gray-300 rounded-xl px-4 py-8 text-left mb-4">
           <div className="flex items-center pb-8">
             <Image
               src={session?.user.image}
@@ -262,9 +262,118 @@ const testFeed = () => {
         </div>
 
         {/* ITEM: Notifications */}
-        <div className="border border-gray-300 rounded-xl px-4 py-4 text-left">
+        <div className="border border-gray-300 rounded-xl px-4 py-8 text-left mb-4">
           <h1 className="text-xl font-normal pb-8">Notifications</h1>
           <p className="text-gray-500 pb-4">No New Notifications at this time</p>
+        </div>
+
+        {/* ITEM: Tips */}
+        <div className="border border-gray-300 rounded-xl py-8 text-left">
+          {/* ITEM: Tip 1 */}
+          <div className="flex items-center justify-between px-4 mb-8 pb-8 border-b border-gray-300">
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <p>Remote Dev Salary Explorer</p>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+              />
+            </svg>
+          </div>
+
+          {/* ITEM: Tip 2 */}
+          <div className="flex items-center justify-between px-4 mb-8 pb-8 border-b border-gray-300">
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"
+                />
+              </svg>
+              <p>Resume Template and Tips</p>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+              />
+            </svg>
+          </div>
+
+          {/* ITEM: Tip 3 */}
+          <div className="flex items-center justify-between px-4">
+            <div className="flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"
+                />
+              </svg>
+
+              <p>Interview Q&As</p>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </section>

@@ -55,48 +55,61 @@ const PostCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
       )}
 
-      {/* Section with image, username, and email **/}
-      <div className="flex justify-between items-start gap-5">
-        <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-          <Image
-            src={post.creator.image}
-            alt="user_image"
-            width={40}
-            height={40}
-            className="rounded-full object-contain"
-          />
+      {/* ITEM: Section with job title, job description, and tags **/}
+      <div className="">
+        {/* ITEM: Post Title */}
+        <p
+          onClick={() => handleCardClick && handleCardClick(post)}
+          className="font-santoshi text-lg font-semibold text-gray-800 cursor-pointer line-clamp-1"
+        >
+          {post.title}
+        </p>
 
-          <div className="flex flex-col">
-            <h3 className="font-santoshi font-semibold text-gray-900">
-              {post.creator.username}
-            </h3>
-            <p className="font-inter text-sm text-gray-500">{post.creator.email}</p>
-          </div>
+        {/* ITEM: Post metadata */}
+        <div className="flex text-sm pb-2 text-gray-500">
+          <p>Posted 1 hour ago •&nbsp;</p>
+          <p>4 proposals •&nbsp;</p>
+          <p>USA</p>
         </div>
-      </div>
 
-      {/* Section with job title, job description, and tags **/}
-      <p
-        onClick={() => handleCardClick && handleCardClick(post)}
-        className="mt-6 font-santoshi text-lg font-semibold text-gray-800 cursor-pointer line-clamp-1"
-      >
-        {post.title}
-      </p>
-      <p
-        onClick={() => handleCardClick && handleCardClick(post)}
-        className="my-2 font-santoshi text-sm text-gray-700 cursor-pointer line-clamp-4"
-      >
-        {post.post}
-      </p>
-      <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 my-2">
-        {post.amount}
-      </p>
+        {/* ITEM: Post Description */}
+        <p
+          onClick={() => handleCardClick && handleCardClick(post)}
+          className="my-2 font-santoshi text-sm text-gray-700 cursor-pointer line-clamp-4"
+        >
+          {post.post}
+        </p>
+        <p className="text-sm text-blue-500 pb-4">View more</p>
 
-      {/* FIXME: The button and line layout is all messed up**/}
-      <div className="my-2 font-santoshi text-xs text-gray-700 cursor-pointer flex flex-wrap gap-2">
-        {post.tags.map((tag) => (
-          <p className="tag__btn mb-4">#{tag}</p>
-        ))}
+        {/* ITEM: FIXME: The button and line layout is all messed up**/}
+        <div className="font-santoshi text-xs text-gray-700 cursor-pointer flex flex-wrap gap-2 mb-4">
+          {post.tags.map((tag) => (
+            <p className="tag__btn">#{tag}</p>
+          ))}
+        </div>
+
+        {/* ITEM: Post Features */}
+        <div className="flex text-xs items-center gap-2">
+          <div className="flex items-center gap-1">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="green"
+              class="w-5 h-5"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                clip-rule="evenodd"
+              />
+            </svg>
+
+            <p>Payment Verified</p>
+          </div>
+          <p className="text-xs border border-gray-300 rounded-lg text-center inline-block py-1 px-2 my-2">
+            {post.amount}
+          </p>
+        </div>
       </div>
     </div>
   );
