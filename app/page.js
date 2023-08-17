@@ -1,6 +1,5 @@
 import React from "react";
 import Feed from "@components/Feed";
-import TestFeed from "@components/testFeed";
 
 const Home = () => {
   return (
@@ -13,8 +12,7 @@ const Home = () => {
         This is a platform designed to help freelancers find work and to help customers
         creating work to pick the right price for them!
       </p>
-      <TestFeed />
-      {/* <Feed /> */}
+      <Feed />
     </section>
   );
 };
