@@ -20,6 +20,7 @@ module.exports = {
         "muted-blue-300": "#d9ebfa",
         "muted-blue-400": "#d1eaff",
         "muted-blue-500": "#c2e3ff",
+        "beige-100": "#fffcf7",
       },
       lineClamp: {
         25: "25",

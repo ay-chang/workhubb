@@ -2,7 +2,7 @@ import React from "react";
 
 const TitleStep = ({ handleNext, handleBack, post, setPost }) => {
   const isEmpty = post.title.trim() === "";
-  const tooLong = post.title.trim().length > 50;
+  const tooLong = post.title.trim().length > 200;
   const tooShort = post.title.trim().length < 5;
 
   return (
