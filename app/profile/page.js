@@ -5,6 +5,10 @@ import { useSession } from "next-auth/react";
 import Info from "@components/profile/Info";
 import Billing from "@components/profile/Billing";
 import Password from "@components/profile/Password";
+import Membership from "@components/profile/Membership";
+import Teams from "@components/profile/Teams";
+import Notifications from "@components/profile/Notifications";
+import Settings from "@components/profile/Settings";
 
 const Profile = () => {
   const [currentItem, setItem] = useState("Info");
@@ -88,6 +92,10 @@ const Profile = () => {
         {currentItem === "Info" && <Info session={session} />}
         {currentItem === "Billing" && <Billing />}
         {currentItem === "Password" && <Password />}
+        {currentItem === "Membership" && <Membership />}
+        {currentItem === "Teams" && <Teams />}
+        {currentItem === "Notifications" && <Notifications />}
+        {currentItem === "Settings" && <Settings />}
       </div>
     </div>
   );
