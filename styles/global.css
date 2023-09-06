@@ -160,7 +160,7 @@
 
 /* Form Component */
 .form__textarea {
-  @apply w-full flex rounded-lg h-[300px] mt-2 p-3 text-sm text-gray-500 outline-0 border-2 border-muted-blue-100 hover:border-muted-blue-200 active:border-muted-blue-300;
+  @apply w-full flex rounded-lg h-[300px] mt-2 p-3 text-sm text-gray-500 outline-0 border-2 border-muted-blue-200 hover:border-muted-blue-300 active:border-muted-blue-300;
   outline: none;
   resize: none;
 }
@@ -178,7 +178,7 @@
 }
 
 .form__input {
-  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 border-2 border-muted-blue-100 hover:border-muted-blue-200 active:border-muted-blue-300;
+  @apply w-full flex rounded-lg mt-2 p-3 text-sm text-gray-500 border-2 border-muted-blue-200 hover:border-muted-blue-300 active:border-muted-blue-300;
   outline: none; /* Remove the default outline */
 }
 

@@ -26,7 +26,7 @@ const DescriptionStep = ({ handleNext, handleBack, post, setPost }) => {
             disabled={isEmpty || tooLong || tooShort}
             className={`flex rounded-xl ${
               isEmpty || tooLong || tooShort
-                ? "bg-muted-blue-200 text-muted-blue-400 py-2 px-8 transition ease-linear"
+                ? "bg-muted-blue-200 text-pastel-blue-100 py-2 px-8 transition ease-linear"
                 : "bg-gradient-to-r from-primary-blue to-secondary-blue text-white py-2 px-8 transition ease-linear"
             }`}
           >

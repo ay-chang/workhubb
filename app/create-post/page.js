@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-import StartStep from "@components/create-post/StartStep";
+import StartStep from "../../components/create-post/StartStep";
 import TitleStep from "@components/create-post/TitleStep";
 import DescriptionStep from "@components/create-post/DescriptionStep";
 import TagStep from "@components/create-post/TagStep";
