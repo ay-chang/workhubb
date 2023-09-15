@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import * as Slider from "@radix-ui/react-slider";
+import "../../styles/slider.css";
 
 const BudgetBox = ({ amount, setPost, post, activeButton, setActiveButton }) => {
   const handleClick = () => {
@@ -141,7 +143,17 @@ const AmountStep = ({ post, setPost, handleNext, handleBack }) => {
             </div>
           </div>
         ) : (
-          <div>Hourly</div>
+          <div>
+            <div>Hourly</div>
+            <form>
+              <Slider.Root className="SliderRoot" defaultValue={[50]} max={100} step={1}>
+                <Slider.Track className="SliderTrack">
+                  <Slider.Range className="SliderRange" />
+                </Slider.Track>
+                <Slider.Thumb className="SliderThumb" aria-label="Volume" />
+              </Slider.Root>
+            </form>
+          </div>
         )}
       </div>
 
